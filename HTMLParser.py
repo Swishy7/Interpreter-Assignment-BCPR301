@@ -18,7 +18,7 @@ class Scrapper:
     '''
     Constructor
     '''
-    # make private???
+    # make private????
     data = [];
     def collect_data(self):
         r = requests.get("http://www.impc.co.nz/products/list/desktop_memory-128-page0.html").text
