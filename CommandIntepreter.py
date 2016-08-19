@@ -32,5 +32,10 @@ class CommandIntepreter(Cmd):
         
     def do_exit(self,line):
         return True
-    
-        
+
+    # stuff to do before running CMD (in the CMD)
+    def preloop(self):
+        pass
+    # stuff to do before closing the CMD (in the CMD)
+    def postloop(self):
+        pass
