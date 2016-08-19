@@ -24,9 +24,9 @@ class Scrapper:
     
     def __init__(self, the_url=None):
         if the_url is None:
+            # PEP8 didn't like the "long" link, had to split it up =.=
             absolute = "http://www.impc.co.nz"
             relative = "/products/list/desktop_memory-128-page0.html"
-            # PEP8 didn't like the "long" link, had to split it up =.=
             self.url = absolute + relative
         '''
         Constructor
