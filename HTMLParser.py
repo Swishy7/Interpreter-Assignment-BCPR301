@@ -13,20 +13,31 @@ from datetime import datetime
 class Scrapper:
     '''
     classdocs
-
-     '''
-    '''def __init__(self, params):
     '''
-    '''
-    Constructor
-    '''
-    # make private????
-    data = []
+    
+    data = {
+        "descriptions": None,
+        "prices": None,
+        "links": None,
+        "date": None
+    }
+    
+    def __init__(self, the_url=None):
+        if the_url is None:
+            absolute = "http://www.impc.co.nz"
+            relative = "/products/list/desktop_memory-128-page0.html"
+            # PEP8 didn't like the "long" link, had to split it up =.=
+            self.url = absolute + relative
+        '''
+        Constructor
+        '''
+    
+    ""
 
     def collect_data(self):
         # had to put url in variable, because otherwise the line was too long.
-        u = "http://www.impc.co.nz/products/list/desktop_memory-128-page0.html"
-        r = requests.get(u).text
+        # u = "http://www.impc.co.nz/products/list/desktop_memory-128-page0.html"
+        r = requests.get(self.url).text
         soup = BeautifulSoup(r, 'html.parser')
         table = soup.find("table", attrs={'class': 'grid productlist'})
         links = self.get_links(table)
@@ -42,10 +53,10 @@ class Scrapper:
         price_list = self.get_prices(third_column)
         description = self.get_description(second_column)
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        self.data.append(description)
-        self.data.append(price_list)
-        self.data.append(links)
-        self.data.append(date)
+        self.data["descriptions"] = description
+        self.data["prices"] = price_list
+        self.data["links"] = links
+        self.data["date"] = date
         # for stuffs in self.data:
         # for item in stuffs:
         # print(item)
