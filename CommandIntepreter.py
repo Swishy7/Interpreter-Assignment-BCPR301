@@ -20,15 +20,26 @@ class CommandIntepreter(Cmd):
         Constructor
         '''
         ""
-        # modified constructor 
+        # modified constructor, therefore have to call super
         super(CommandIntepreter,self).__init__()
         self.my_controller = None;
     
     def set_controller(self, the_controller):
         self.my_controller = the_controller
-        
-    def do_test(self,line):
-        self.my_controller.say("rawr")
+
+    # Gets information from the web   
+    def get_data(self, line):
+        pass
+    
+    # Sets the path for the db
+    def do_set_db_path(self, the_path):
+        self.my_controller.set_db_path(the_path)
+    
+    def do_get_db_path(self, line):
+        self.my_controller.get_db_path()
+    
+    def do_save_data(self, line):
+        self.my_controller.save_data()
         
     def do_exit(self,line):
         return True

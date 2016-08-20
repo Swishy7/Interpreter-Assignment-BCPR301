@@ -109,6 +109,6 @@ class Scrapper:
         return self.data
 
 
-scrapper = Scrapper()
+#scrapper = Scrapper()
 
-scrapper.collect_data()
+#scrapper.collect_data()
