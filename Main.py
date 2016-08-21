@@ -1,8 +1,8 @@
-'''
+"""
 Created on 19/08/2016
 
 @author: AndrewM
-'''
+"""
 from InterpreterAssignment import Controller
 from InterpreterAssignment import Product
 from InterpreterAssignment import HTMLParser

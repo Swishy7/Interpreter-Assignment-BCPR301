@@ -1,16 +1,18 @@
-'''
+"""
 Created on 19/08/2016
 
 @author: AndrewM
-'''
+"""
+import doctest
 from InterpreterAssignment import HTMLParser
 from InterpreterAssignment import Product
 from InterpreterAssignment import FileHandler
 
 class Controller:
-    '''
+    """
     classdocs
-    '''
+
+    """
     # instances of Product
     #products = set()
     products = []
@@ -55,11 +57,13 @@ class Controller:
         for product in self.products:
             descriptions.append(product.get_description())
         # for every instance of product saved, load it, get it's object data, then store it.
-        for loaded_product in self.my_file_handler.read_database():
-            # if the description is not found, it's not in the list, add it.
-            if loaded_product.get_description() not in descriptions:
-                self.products.append(loaded_product.get_object())
-        print(str(len(self.products)))
+        loaded_data = self.my_file_handler.read_database()
+        if loaded_data is not None:
+            for loaded_product in loaded_data:
+                # if the description is not found, it's not in the list, add it.
+                if loaded_product.get_description() not in descriptions:
+                    self.products.append(loaded_product)
+            print(str(len(self.products)))
         
     def set_db_path(self, the_path):
         self.my_file_handler.set_path(the_path)
@@ -71,9 +75,32 @@ class Controller:
         self.my_html_parser.collect_data()
         web_data = self.my_html_parser.get_data()
         date = web_data["date"]
+        # used to verify repeat descriptions are not being added.
+        descriptions = []
+        # if there are existing products, add the descriptions to list.
+        if len(self.products) > 0:
+            for product in self.products:
+                descriptions.append(product.get_description())
+        # sort through the scrapped data and
         for i in range(len(web_data["descriptions"])):
-            desc = web_data["descriptions"][i]
-            price = web_data["prices"][i]
-            link = web_data["links"][i]
-            self.products.append(Product.Product(desc,price[0],price[1],link,date))
-        
+            # if the description isn't already saved, save it.
+            if web_data["descriptions"][i] not in descriptions:
+                desc = web_data["descriptions"][i]
+                price = web_data["prices"][i]
+                link = web_data["links"][i]
+                self.products.append(Product.Product(desc,price[0],price[1],link,date))
+
+    def display_data(self):
+        if len(self.products) > 0:
+            for product in self.products:
+                print(product.get_object())
+        else:
+            print("No products to display try loading or scraping")
+# todo: write a function covering the functionality of
+# building up descriptions, this is used in 2 places
+# currently. 
+
+# todo: add functionality which allows the incoming data
+# to overwrite old data, should the user do a certain flag
+# if the flag returns true, check if description exists if
+# it exists, delete the old one, add the new one.

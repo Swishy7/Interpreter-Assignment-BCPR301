@@ -1,8 +1,8 @@
-'''
+"""
 Created on 18/08/2016
 
 @author: AndrewM
-'''
+"""
 # import bs4
 import requests
 import csv
@@ -11,9 +11,9 @@ from datetime import datetime
 
 
 class Scrapper:
-    '''
+    """
     classdocs
-    '''
+    """
     
     data = {
         "descriptions": None,

@@ -5,9 +5,9 @@ Created on 19/08/2016
 '''
 
 class Product:
-    '''
+    """
     classdocs
-    '''
+    """
     
 
     def __init__(self, the_description, the_dollars, the_cents, the_link, the_date):
