@@ -28,14 +28,6 @@ class Controller:
         
     def go(self):
         self.my_command_intepreter.set_controller(self)
-        self.my_html_parser.collect_data()
-        web_data = self.my_html_parser.get_data()
-        date = web_data["date"]
-        for i in range(len(web_data["descriptions"])):
-            desc = web_data["descriptions"][i]
-            price = web_data["prices"][i]
-            link = web_data["links"][i]
-            self.products.append(Product.Product(desc,price[0],price[1],link,date))
             # print("Dollars: " + str(price[0]) + " Cents " + str(price[1]))
         # start the CMD here, no more code will run until exiting.
         self.my_command_intepreter.cmdloop()
@@ -74,4 +66,14 @@ class Controller:
         
     def get_db_path(self):
         print(self.my_file_handler.get_db_path())
+        
+    def scrape_data(self):
+        self.my_html_parser.collect_data()
+        web_data = self.my_html_parser.get_data()
+        date = web_data["date"]
+        for i in range(len(web_data["descriptions"])):
+            desc = web_data["descriptions"][i]
+            price = web_data["prices"][i]
+            link = web_data["links"][i]
+            self.products.append(Product.Product(desc,price[0],price[1],link,date))
         

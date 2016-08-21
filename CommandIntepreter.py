@@ -44,6 +44,9 @@ class CommandIntepreter(Cmd):
     def do_load_data(self, line):
         self.my_controller.load_data()
         
+    def do_scrape_data(self, line):
+        self.my_controller.scrape_data()
+        
     def do_exit(self,line):
         return True
 

@@ -29,11 +29,12 @@ class FileHandler:
     def write_database(self, the_product):
         self.products = the_product
         #print("Products passed in: " + str(type(self.products)) + "\n" + "Test data: " + str(type(self.test))
-        with open('filename.pickle', 'wb') as handle:
+        with open(self.path+'filename.pickle', 'wb') as handle:
              pickle.dump(self.products, handle)
         #print(self.products)
         
     def read_database(self):
+        # if no path is given, the file will be saved in Python directory
         with open('filename.pickle', 'rb') as handle:
             loaded_products = pickle.load(handle)
             return loaded_products
