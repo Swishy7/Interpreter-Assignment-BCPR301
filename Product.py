@@ -5,9 +5,9 @@ Created on 19/08/2016
 '''
 
 class Product:
-    '''
+    """
     classdocs
-    '''
+    """
     
 
     def __init__(self, the_description, the_dollars, the_cents, the_link, the_date):
@@ -37,6 +37,14 @@ class Product:
     
     def get_date(self):
         return self.date
+    
+    def get_object(self):
+        return {"description": self.description,
+                "dollars": self.dollars,
+                "cents": self.cents,
+                "link": self.link,
+                "date": self.date
+                }
     
     
         

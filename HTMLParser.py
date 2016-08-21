@@ -1,8 +1,8 @@
-'''
+"""
 Created on 18/08/2016
 
 @author: AndrewM
-'''
+"""
 # import bs4
 import requests
 import csv
@@ -11,9 +11,9 @@ from datetime import datetime
 
 
 class Scrapper:
-    '''
+    """
     classdocs
-    '''
+    """
     
     data = {
         "descriptions": None,
@@ -102,13 +102,14 @@ class Scrapper:
     def get_description(self, column):
         description = []
         for the_description in column:
-            description.append((the_description.string))
+            # beautiful soup doesn't actually convert data to string, have to do it yourself, this caused issues.
+            description.append((str(the_description.string)))
         return description
 
     def get_data(self):
         return self.data
 
 
-scrapper = Scrapper()
+#scrapper = Scrapper()
 
-scrapper.collect_data()
+#scrapper.collect_data()
