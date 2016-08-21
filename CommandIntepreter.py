@@ -26,7 +26,7 @@ class CommandIntepreter(Cmd):
     
     def set_controller(self, the_controller):
         self.my_controller = the_controller
-
+                
     # Gets information from the web   
     def get_data(self, line):
         pass
@@ -40,6 +40,9 @@ class CommandIntepreter(Cmd):
     
     def do_save_data(self, line):
         self.my_controller.save_data()
+    
+    def do_load_data(self, line):
+        self.my_controller.load_data()
         
     def do_exit(self,line):
         return True

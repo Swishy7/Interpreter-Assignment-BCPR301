@@ -102,7 +102,8 @@ class Scrapper:
     def get_description(self, column):
         description = []
         for the_description in column:
-            description.append((the_description.string))
+            # beautiful soup doesn't actually convert data to string, have to do it yourself, this caused issues.
+            description.append((str(the_description.string)))
         return description
 
     def get_data(self):

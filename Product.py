@@ -38,5 +38,13 @@ class Product:
     def get_date(self):
         return self.date
     
+    def get_object(self):
+        return {"description": self.description,
+                "dollars": self.dollars,
+                "cents": self.cents,
+                "link": self.link,
+                "date": self.date
+                }
+    
     
         
