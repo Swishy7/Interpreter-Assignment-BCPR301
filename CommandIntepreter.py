@@ -70,6 +70,24 @@ class CommandIntepreter(Cmd):
         """
         self.my_controller.scrape_data()
         
+    def do_get_average(self, line):
+        """
+        (> ^_^)>---[ Display the average price of the loaded products ]
+        """
+        self.my_controller.get_average();
+    
+    def do_get_max(self, line):
+        """
+        (> ^_^)>---[ Displays the highest price ]
+        """
+        self.my_controller.get_max();
+
+    def do_get_min(self, line):
+        """
+        (> ^_^)>---[ Displays the lowest price ]     
+        """
+        self.my_controller.get_min();
+        
     def do_exit(self,line):
         """
         (> ^_^ )>---[ Exit the Program ]

@@ -19,7 +19,11 @@ class Controller:
     # object counterparts of product
     #product_object = frozenset()
     
-    def __init__(self, the_html_parser, the_command_interpreter, the_file_handler):
+    def __init__(self,
+                 the_html_parser,
+                 the_command_interpreter,
+                 the_file_handler,
+                 the_statistics_calculator):
         '''
         Constructor
         '''
@@ -27,6 +31,7 @@ class Controller:
         # self.my_product = the_product
         self.my_command_intepreter = the_command_interpreter
         self.my_file_handler = the_file_handler
+        self.my_statistic_calculator = the_statistics_calculator
         
     def go(self):
         self.my_command_intepreter.set_controller(self)
@@ -90,12 +95,48 @@ class Controller:
                 link = web_data["links"][i]
                 self.products.append(Product.Product(desc,price[0],price[1],link,date))
 
+    # checks an object to see if it contains anything
+    # checks the products if nothing is passed in
+    def check_data(self, data = products):
+        if len(data) > 0:
+            return True;
+        else:
+            return False;
+        
     def display_data(self):
         if len(self.products) > 0:
             for product in self.products:
                 print(product.get_object())
         else:
             print("No products to display try loading or scraping")
+            
+    def get_average(self):
+        if(self.check_data()):
+            currency = self.get_currency()
+            print("{0:.2f}".format(self.my_statistic_calculator.calc_average(currency)))
+        else:
+            print("No products to display try loading or scraping")
+    
+    def get_max(self):
+        if(self.check_data()):
+            currency = self.get_currency()
+            print(self.my_statistic_calculator.calc_max(currency))
+        else:
+            print("No products to display try loading or scraping")
+            
+    def get_min(self):
+        if(self.check_data()):
+            currency = self.get_currency()
+            print(self.my_statistic_calculator.calc_min(currency))
+    
+    # returns a list of currencies from the loaded products
+    def get_currency(self):
+        currency = []
+        for product in self.products:
+            currency.append(product.get_price())
+        return currency
+    
+    
 # todo: write a function covering the functionality of
 # building up descriptions, this is used in 2 places
 # currently. 
