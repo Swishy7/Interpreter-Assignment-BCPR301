@@ -10,7 +10,7 @@ class Product:
     """
     
 
-    def __init__(self, the_description, the_dollars, the_cents, the_link, the_date):
+    def __init__(self, the_description, the_dollars, the_cents, the_link, the_date, the_views):
         '''
         Constructor (> ^_^ )>
         '''
@@ -19,6 +19,7 @@ class Product:
         self.cents = the_cents
         self.link = the_link
         self.date = the_date
+        self.views = the_views
         
     def get_description(self):
         return self.description
@@ -38,12 +39,16 @@ class Product:
     def get_date(self):
         return self.date
     
+    def get_views(self):
+        return self.views
+    
     def get_object(self):
         return {"description": self.description,
                 "dollars": self.dollars,
                 "cents": self.cents,
                 "link": self.link,
-                "date": self.date
+                "date": self.date,
+                "views": self.views
                 }
     
     

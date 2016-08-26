@@ -9,16 +9,16 @@ class StatisticCalculator:
         Generates price statistics
     """
         
-    def calc_min(self, currency_list):
+    def calc_min_price(self, currency_list):
         prices = self.price_translator(currency_list)        
         return min(prices)
         
     
-    def calc_max(self, currency_list):
+    def calc_max_price(self, currency_list):
         prices = self.price_translator(currency_list)
         return max(prices)
     
-    def calc_average(self, currency_list):
+    def calc_average_price(self, currency_list):
         prices = self.price_translator(currency_list)
         total = 0;
         for price in prices:
@@ -34,3 +34,16 @@ class StatisticCalculator:
             currency = float(currency_list[i][1:])
             price_list.append(currency)
         return price_list
+
+    def calc_min_views(self, views):
+        return min(views)
+    
+    def calc_max_views(self, views):
+        return max(views)
+    
+    def calc_average_views(self, views):
+        total = 0;
+        for view in views:
+            total += view
+        average = total / len(views)
+        return average

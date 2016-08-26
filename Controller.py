@@ -68,7 +68,7 @@ class Controller:
                 # if the description is not found, it's not in the list, add it.
                 if loaded_product.get_description() not in descriptions:
                     self.products.append(loaded_product)
-            print(str(len(self.products)))
+            print("Loaded " + str(len(self.products)) + " products")
         
     def set_db_path(self, the_path):
         self.my_file_handler.set_path(the_path)
@@ -93,7 +93,8 @@ class Controller:
                 desc = web_data["descriptions"][i]
                 price = web_data["prices"][i]
                 link = web_data["links"][i]
-                self.products.append(Product.Product(desc,price[0],price[1],link,date))
+                views = web_data["views"][i]
+                self.products.append(Product.Product(desc, price[0], price[1], link, date, views))
 
     # checks an object to see if it contains anything
     # checks the products if nothing is passed in
@@ -110,24 +111,24 @@ class Controller:
         else:
             print("No products to display try loading or scraping")
             
-    def get_average(self):
+    def get_average_price(self):
         if(self.check_data()):
             currency = self.get_currency()
-            print("{0:.2f}".format(self.my_statistic_calculator.calc_average(currency)))
+            print("{0:.2f}".format(self.my_statistic_calculator.calc_average_price(currency)))
         else:
             print("No products to display try loading or scraping")
     
-    def get_max(self):
+    def get_max_price(self):
         if(self.check_data()):
             currency = self.get_currency()
-            print(self.my_statistic_calculator.calc_max(currency))
+            print(self.my_statistic_calculator.calc_max_price(currency))
         else:
             print("No products to display try loading or scraping")
             
-    def get_min(self):
+    def get_min_price(self):
         if(self.check_data()):
             currency = self.get_currency()
-            print(self.my_statistic_calculator.calc_min(currency))
+            print(self.my_statistic_calculator.calc_min_price(currency))
     
     # returns a list of currencies from the loaded products
     def get_currency(self):
@@ -136,7 +137,43 @@ class Controller:
             currency.append(product.get_price())
         return currency
     
+    def get_views(self):
+        views = []
+        for product in self.products:
+            views.append(product.get_views())
+        return views;
     
+    def get_min_views(self):
+        if(self.check_data()):
+            views = self.get_views()
+            print(self.my_statistic_calculator.calc_min_views(views))
+        else:
+            print("No products to display try loading or scraping")
+    
+    def get_max_views(self):
+        if(self.check_data()):
+            views = self.get_views()
+            print(self.my_statistic_calculator.calc_max_views(views))
+        else:
+            print("No products to display try loading or scraping")
+    
+    def get_average_views(self):
+        if(self.check_data()):
+            views = self.get_views()
+            print(self.my_statistic_calculator.calc_average_views(views))
+        else:
+            print("No products to display try loading or scraping")
+    
+    def set_file_name(self, name):
+        self.my_file_handler.set_file_name(name)
+    
+    
+# imports should be at the top, but it's practical to only import
+# doctest in the scenario that we are testing the file?
+
+#if __name__ == "__main__":
+#    import doctest
+#    doctest.testmod()
 # todo: write a function covering the functionality of
 # building up descriptions, this is used in 2 places
 # currently. 

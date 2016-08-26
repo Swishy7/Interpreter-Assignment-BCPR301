@@ -19,7 +19,8 @@ class Scrapper:
         "descriptions": None,
         "prices": None,
         "links": None,
-        "date": None
+        "date": None,
+        "views" : None
     }
     
     def __init__(self, the_url=None):
@@ -57,14 +58,8 @@ class Scrapper:
         self.data["prices"] = price_list
         self.data["links"] = links
         self.data["date"] = date
-        # for stuffs in self.data:
-        # for item in stuffs:
-        # print(item)
-
-        # for i in range(2):
-        # for item in self.data[i]:
-        # print(item)
-        # print(self.data[3])
+        page_views = self.get_page_view()
+        self.data["views"] = page_views
 
     def get_links(self, table):
         links = []
@@ -108,8 +103,21 @@ class Scrapper:
 
     def get_data(self):
         return self.data
-
-
-#scrapper = Scrapper()
-
-#scrapper.collect_data()
+    
+    def get_page_view(self):
+        image_data = []
+        count = 1;
+        print("Getting page view data...")
+        num_links = len(self.data["links"])
+        for link in self.data["links"]:
+            print("Working on page " + str(count) + " of " + str(num_links) + "...")
+            r = requests.get(link).text
+            soup = BeautifulSoup(r, 'html.parser')
+            image_data.append(str(soup.find("img", attrs={'class': 'imagenumber'})))
+            count += 1
+        print("Finished.. Collected " + str(len(image_data)) + " of " + str(num_links))
+        page_view_data = []
+        for datum in image_data:
+            # grab the first element of the returned list
+            page_view_data.append(int(datum[10:].rsplit('\" class')[0]))
+        return page_view_data
