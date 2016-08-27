@@ -30,7 +30,9 @@ class Controller:
         self.my_file_handler = the_file_handler
         self.my_statistic_calculator = the_statistics_calculator
 
-    def go(self):
+    def go(self, is_run_scraper):
+        #if is_run_scraper:
+        # print("yus")
         self.my_command_intepreter.set_controller(self)
         # print("Dollars: " + str(price[0]) + " Cents " + str(price[1]))
         # start the CMD here, no more code will run until exiting.
