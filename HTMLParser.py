@@ -14,15 +14,15 @@ class Scrapper:
     """
     classdocs
     """
-    
+
     data = {
         "descriptions": None,
         "prices": None,
         "links": None,
         "date": None,
-        "views" : None
+        "views": None
     }
-    
+
     def __init__(self, the_url=None):
         if the_url is None:
             # PEP8 didn't like the "long" link, had to split it up =.=
@@ -32,12 +32,12 @@ class Scrapper:
         '''
         Constructor
         '''
-    
+
     ""
 
     def collect_data(self):
         # had to put url in variable, because otherwise the line was too long.
-        # u = "http://www.impc.co.nz/products/list/desktop_memory-128-page0.html"
+        # u="http://www.impc.co.nz/products/list/desktop_memory-128-page0.html"
         r = requests.get(self.url).text
         soup = BeautifulSoup(r, 'html.parser')
         table = soup.find("table", attrs={'class': 'grid productlist'})
@@ -97,25 +97,30 @@ class Scrapper:
     def get_description(self, column):
         description = []
         for the_description in column:
-            # beautiful soup doesn't actually convert data to string, have to do it yourself, this caused issues.
+            # beautiful soup doesn't actually convert data to string,
+            # have to do it yourself, this caused issues.
             description.append((str(the_description.string)))
         return description
 
     def get_data(self):
         return self.data
-    
+
     def get_page_view(self):
         image_data = []
-        count = 1;
+        count = 1
         print("Getting page view data...")
         num_links = len(self.data["links"])
         for link in self.data["links"]:
-            print("Working on page " + str(count) + " of " + str(num_links) + "...")
+            print("Working on page " +
+                  str(count) + " of " + str(num_links) + "...")
             r = requests.get(link).text
             soup = BeautifulSoup(r, 'html.parser')
-            image_data.append(str(soup.find("img", attrs={'class': 'imagenumber'})))
+            image_data.append(str(
+                              soup.find(
+                                  "img", attrs={'class': 'imagenumber'})))
             count += 1
-        print("Finished.. Collected " + str(len(image_data)) + " of " + str(num_links))
+        print("Finished.. Collected " +
+              str(len(image_data)) + " of " + str(num_links))
         page_view_data = []
         for datum in image_data:
             # grab the first element of the returned list
