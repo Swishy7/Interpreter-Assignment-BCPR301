@@ -56,7 +56,7 @@ class FileHandler:
     def verify_path(self, the_path):
         # testing path requires forward slash not back.
         formatted_path = the_path.replace("\\", "/")
-        # detects whether the path is
+        # detects whether the path is legitimate
         return os.path.isdir(formatted_path)
 
     def set_file_name(self, the_file_name):

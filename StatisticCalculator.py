@@ -13,7 +13,7 @@ Test the correct views
 
 class StatisticCalculator:
     """
-        Generates price statistics
+        Generates price and view statistics
     """
 
     def calc_min_price(self, currency_list):

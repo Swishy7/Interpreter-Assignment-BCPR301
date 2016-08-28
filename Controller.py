@@ -1,20 +1,12 @@
-"""
-Created on 19/08/2016
+import Product
 
-@author: AndrewM
-"""
-from InterpreterAssignment import Product
 
 class Controller:
     """
     classdocs
 
     """
-    # instances of Product
-    # products = set()
     products = []
-    # object counterparts of product
-    # product_object = frozenset()
 
     def __init__(self,
                  the_html_parser,
@@ -30,26 +22,17 @@ class Controller:
         self.my_file_handler = the_file_handler
         self.my_statistic_calculator = the_statistics_calculator
 
-    def go(self, is_run_scraper):
-        #if is_run_scraper:
-        # print("yus")
+    def go(self, is_auto_scrape):
+        if is_auto_scrape:
+            self.scrape_data()
         self.my_command_intepreter.set_controller(self)
-        # print("Dollars: " + str(price[0]) + " Cents " + str(price[1]))
-        # start the CMD here, no more code will run until exiting.
+        # start the CMD here.
         self.my_command_intepreter.cmdloop()
-        # TESTING, NEED SOME TYPE OF VIEW FOR PRINTING
-#         for i in range(len(self.products)):
-#             print(self.products[i].get_description())
-#             print(self.products[i].get_price())
 
     # Called by CommandInterpreter.
     def save_data(self):
         # save the products to the database, if they exist
         if len(self.products) > 0:
-            # objects = []
-            # for product in self.products:
-                # objects.append(product.get_object())
-                # print(objects)
             self.my_file_handler.write_database(self.products)
         else:
             print("There are no products to save")
@@ -112,14 +95,14 @@ class Controller:
             return False
 
     def display_data(self):
-        if len(self.products) > 0:
+        if self.check_data():
             for product in self.products:
                 print(product.get_object())
         else:
             print("No products to display try loading or scraping")
 
     def get_average_price(self):
-        if(self.check_data()):
+        if self.check_data():
             currency = self.get_currency()
             print("{0:.2f}".format(
                             self.my_statistic_calculator.calc_average_price(
@@ -128,14 +111,14 @@ class Controller:
             print("No products to display try loading or scraping")
 
     def get_max_price(self):
-        if(self.check_data()):
+        if self.check_data():
             currency = self.get_currency()
             print(self.my_statistic_calculator.calc_max_price(currency))
         else:
             print("No products to display try loading or scraping")
 
     def get_min_price(self):
-        if(self.check_data()):
+        if self.check_data():
             currency = self.get_currency()
             print(self.my_statistic_calculator.calc_min_price(currency))
 
@@ -153,21 +136,21 @@ class Controller:
         return views
 
     def get_min_views(self):
-        if(self.check_data()):
+        if self.check_data():
             views = self.get_views()
             print(self.my_statistic_calculator.calc_min_views(views))
         else:
             print("No products to display try loading or scraping")
 
     def get_max_views(self):
-        if(self.check_data()):
+        if self.check_data():
             views = self.get_views()
             print(self.my_statistic_calculator.calc_max_views(views))
         else:
             print("No products to display try loading or scraping")
 
     def get_average_views(self):
-        if(self.check_data()):
+        if self.check_data():
             views = self.get_views()
             print(self.my_statistic_calculator.calc_average_views(views))
         else:
@@ -175,19 +158,3 @@ class Controller:
 
     def set_file_name(self, name):
         self.my_file_handler.set_file_name(name)
-
-
-# imports should be at the top, but it's practical to only import
-# doctest in the scenario that we are testing the file?
-1
-# if __name__ == "__main__":
-#    import doctest
-#    doctest.testmod()
-# todo: write a function covering the functionality of
-# building up descriptions, this is used in 2 places
-# currently.
-
-# todo: add functionality which allows the incoming data
-# to overwrite old data, should the user do a certain flag
-# if the flag returns true, check if description exists if
-# it exists, delete the old one, add the new one.

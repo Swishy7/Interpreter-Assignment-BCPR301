@@ -3,13 +3,13 @@ Created on 19/08/2016
 
 @author: AndrewM
 """
-
-from InterpreterAssignment import Controller
-from InterpreterAssignment import HTMLParser
-from InterpreterAssignment import CommandIntepreter as CMDI
-from InterpreterAssignment import FileHandler
-from InterpreterAssignment import StatisticCalculator as Calc
+import Controller
+import HTMLParser
+import CommandIntepreter as CMDI
+import FileHandler
+import StatisticCalculator as Calc
 import sys
+
 
 def main():
     my_controller = Controller.Controller(HTMLParser.Scrapper(),

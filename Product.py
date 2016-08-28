@@ -1,5 +1,5 @@
 """
-Test the correct views
+Test the correct returns
 
 >>> p = Product("O hai", 20, 20, "http://wwww.rawr", "10/10/16", 125)
 >>> p.get_views()
@@ -30,9 +30,7 @@ class Product:
                  the_link,
                  the_date,
                  the_views):
-        '''
-        Constructor (> ^_^ )>
-        '''
+
         self.description = the_description
         self.dollars = the_dollars
         self.cents = the_cents

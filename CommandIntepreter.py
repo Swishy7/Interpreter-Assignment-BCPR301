@@ -1,10 +1,5 @@
-"""
-Created on 19/08/2016
-
-@author: AndrewM
-"""
 from cmd import Cmd
-from InterpreterAssignment import Controller
+import Controller
 
 
 class CommandIntepreter(Cmd):
@@ -54,7 +49,7 @@ class CommandIntepreter(Cmd):
     def do_save_data(self, line):
         """
         (> ^_^ )>---[ Save data gathered from scraping, so it can be ]
-                    [ loaded in another session, loads from then ]
+                    [ loaded in another session, loads from the ]
                     [ default directory if a path has not been ]
                     [ specified ]
         """

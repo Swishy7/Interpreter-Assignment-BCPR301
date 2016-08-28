@@ -1,14 +1,9 @@
-'''
-Created on 21/08/2016
-
-@author: AndrewM
-'''
 import unittest
-from InterpreterAssignment import Controller
-from InterpreterAssignment import HTMLParser
-from InterpreterAssignment import CommandIntepreter as CMDI
-from InterpreterAssignment import FileHandler
-from InterpreterAssignment import StatisticCalculator as Calc
+import Controller
+import HTMLParser
+import CommandIntepreter as CMDI
+import FileHandler
+import StatisticCalculator as Calc
 
 
 class UnitTester(unittest.TestCase):

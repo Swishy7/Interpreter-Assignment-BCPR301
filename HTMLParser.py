@@ -1,11 +1,4 @@
-"""
-Created on 18/08/2016
-
-@author: AndrewM
-"""
-# import bs4
 import requests
-import csv
 from bs4 import BeautifulSoup
 from datetime import datetime
 
@@ -42,7 +35,6 @@ class Scrapper:
         soup = BeautifulSoup(r, 'html.parser')
         table = soup.find("table", attrs={'class': 'grid productlist'})
         links = self.get_links(table)
-        # links = soup.findAll('a')
         rows = table.find_all('tr')
         second_column = []
         third_column = []
@@ -65,11 +57,9 @@ class Scrapper:
         links = []
         # Starts at the 2nd row, and skips every odd row after
         for link in table.findAll('a', href=True)[1::2]:
-            # if link.has_attr('href'):
             # the links were relative,
             # so concatenation was used to convert them to absolute
             links.append("http://www.impc.co.nz" + link['href'])
-            # print("http://www.impc.co.nz" +link['href'])
         return links
 
     def get_prices(self, column):
@@ -78,15 +68,13 @@ class Scrapper:
             dollars = 0
             cents = 0
             # start printing from the first character onwards
-            # (to remove the $ symbol
+            # to remove the $ symbol
             # cuts off the end of the string starting at the
             # specified character, in this case: '+'
-            # print(price[1:].rsplit('+', 1)[0])
             dollars = int(price[1:].rsplit('.', 1)[0])
             # scan past $ symbol and decimal point,
             # thus +2, and scan past the dollars. len doesn't work on ints
             cents = int(price[len(str(dollars))+2:].rsplit('+', 1)[0])
-            # price_list.append(price.string)
             price = []
             price.append(dollars)
             price.append(cents)
