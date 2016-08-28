@@ -9,7 +9,7 @@ class CommandIntepreter(Cmd):
     intro = "(> ^_^ )>---[ Welcome ]"
     prompt = ">>>"
 
-    my_controller = Controller.Controller
+    #my_controller = Controller.Controller
 
     def __init__(self):
 
