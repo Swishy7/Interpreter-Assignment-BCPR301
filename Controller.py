@@ -68,6 +68,7 @@ class Controller:
         # used to verify repeat descriptions are not being added.
         descriptions = []
         # if there are existing products, add the descriptions to list.
+        # (> ^_^ )>---[ convert the next 3 lines to a function ]
         if len(self.products) > 0:
             for product in self.products:
                 descriptions.append(product.get_description())
@@ -75,6 +76,8 @@ class Controller:
         for i in range(len(web_data["descriptions"])):
             # if the description isn't already saved, save it.
             if web_data["descriptions"][i] not in descriptions:
+                # extra variables pointless 
+                # just create a product directly from the web_data?
                 desc = web_data["descriptions"][i]
                 price = web_data["prices"][i]
                 link = web_data["links"][i]
@@ -88,6 +91,10 @@ class Controller:
 
     # checks an object to see if it contains anything
     # checks the products if nothing is passed in
+    
+    def get_descriptions(self):
+        pass
+    
     def check_data(self, data=products):
         if len(data) > 0:
             return True
