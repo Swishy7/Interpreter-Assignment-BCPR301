@@ -4,7 +4,10 @@ import HTMLParser
 import CommandIntepreter as CMDI
 import FileHandler
 import StatisticCalculator as Calc
+import coverage
 
+test = coverage.summary
+print(test)
 
 class UnitTester(unittest.TestCase):
 
