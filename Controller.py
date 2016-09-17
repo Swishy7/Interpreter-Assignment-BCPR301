@@ -95,7 +95,10 @@ class Controller:
     def get_descriptions(self, descriptions):
         for product in self.products:
             descriptions.append(product.get_description())
-    
+
+    def add_product(self, description, price, link, view, date):
+        pass
+
     def check_data(self, data=products):
         if len(data) > 0:
             return True
