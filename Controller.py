@@ -70,9 +70,9 @@ class Controller:
         # if there are existing products, add the descriptions to list.
         # (> ^_^ )>---[ convert the next 3 lines to a function ]
         if len(self.products) > 0:
-            for product in self.products:
-                descriptions.append(product.get_description())
+            self.get_descriptions(descriptions)
         # sort through the scrapped data and
+        print(descriptions)
         for i in range(len(web_data["descriptions"])):
             # if the description isn't already saved, save it.
             if web_data["descriptions"][i] not in descriptions:
@@ -92,8 +92,9 @@ class Controller:
     # checks an object to see if it contains anything
     # checks the products if nothing is passed in
     
-    def get_descriptions(self):
-        pass
+    def get_descriptions(self, descriptions):
+        for product in self.products:
+            descriptions.append(product.get_description())
     
     def check_data(self, data=products):
         if len(data) > 0:
