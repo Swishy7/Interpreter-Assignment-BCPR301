@@ -72,32 +72,29 @@ class Controller:
         if len(self.products) > 0:
             self.get_descriptions(descriptions)
         # sort through the scrapped data and
-        print(descriptions)
         for i in range(len(web_data["descriptions"])):
             # if the description isn't already saved, save it.
             if web_data["descriptions"][i] not in descriptions:
-                # extra variables pointless 
-                # just create a product directly from the web_data?
-                desc = web_data["descriptions"][i]
-                price = web_data["prices"][i]
-                link = web_data["links"][i]
-                views = web_data["views"][i]
-                self.products.append(Product.Product(desc,
-                                                     price[0],
-                                                     price[1],
-                                                     link,
-                                                     date,
-                                                     views))
+                self.add_product(web_data["descriptions"][i],
+                                 web_data["prices"][i],
+                                 web_data["links"][i],
+                                 web_data["views"][i],
+                                 date)
 
     # checks an object to see if it contains anything
     # checks the products if nothing is passed in
-    
+
     def get_descriptions(self, descriptions):
         for product in self.products:
             descriptions.append(product.get_description())
 
     def add_product(self, description, price, link, view, date):
-        pass
+        self.products.append(Product.Product(description,
+                                             price[0],
+                                             price[1],
+                                             link,
+                                             date,
+                                             view))
 
     def check_data(self, data=products):
         if len(data) > 0:
