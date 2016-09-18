@@ -1,7 +1,7 @@
 """
 Test the correct returns
 
->>> p = Product("O hai", 20, 20, "http://wwww.rawr", "10/10/16", 125)
+>>> p = product("O hai", 20, 20, "http://wwww.rawr", "10/10/16", 125)
 >>> p.get_views()
 125
 
@@ -19,7 +19,7 @@ Test the correct returns
 """
 
 
-class Product:
+class product:
     """
     classdocs
     """

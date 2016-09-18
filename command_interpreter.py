@@ -1,8 +1,8 @@
 from cmd import Cmd
-import Controller
+import controller
 
 
-class CommandIntepreter(Cmd):
+class CommandInterpreter(Cmd):
     """
     classdocs
     """
@@ -18,7 +18,7 @@ class CommandIntepreter(Cmd):
         '''
         ""
         # modified constructor, therefore have to call super
-        super(CommandIntepreter, self).__init__()
+        super(CommandInterpreter, self).__init__()
         self.my_controller = None
 
     def set_controller(self, the_controller):

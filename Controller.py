@@ -1,4 +1,4 @@
-import Product
+import product
 
 
 class Controller:
@@ -88,7 +88,7 @@ class Controller:
             descriptions.append(product.get_description())
 
     def add_product(self, description, price, link, view, date):
-        self.products.append(Product.Product(description,
+        self.products.append(product.product(description,
                                              price[0],
                                              price[1],
                                              link,

@@ -1,9 +1,9 @@
 import unittest
-import Controller
-import HTMLParser
-import CommandIntepreter as CMDI
-import FileHandler
-import StatisticCalculator as Calc
+import controller
+import html_parser
+import command_interpreter as cmdi
+import file_handler
+import statistic_calculator as calc
 import coverage
 
 
@@ -12,11 +12,11 @@ class UnitTester(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         super(UnitTester, cls).setUpClass()
-        cls.my_controller = Controller.Controller(
-                                            HTMLParser.Scrapper(),
-                                            CMDI.CommandIntepreter(),
-                                            FileHandler.FileHandler(),
-                                            Calc.StatisticCalculator()
+        cls.my_controller = controller.Controller(
+                                            html_parser.Scrapper(),
+                                            cmdi.CommandInterpreter(),
+                                            file_handler.FileHandler(),
+                                            calc.StatisticCalculator()
                                         )
         cls.my_controller.scrape_data()
 
@@ -68,14 +68,14 @@ class UnitTester(unittest.TestCase):
         self.assertEqual(type(
                          self.my_controller.products[0].get_views()
                          ) is int, True, "onoes")
-    
+
     def test_no_duplicate_description(self):
         before = len(self.my_controller.products)
         self.my_controller.save_data()
         self.my_controller.load_data()
         after = len(self.my_controller.products)
         self.assertEqual(before, after, "onoes")
-        
+
     def test_add_product(self):
         self.my_controller.save_data()
         del self.my_controller.products[0]
@@ -83,7 +83,7 @@ class UnitTester(unittest.TestCase):
         self.my_controller.load_data()
         after = len(self.my_controller.products)
         self.assertEqual(before + 1, after, "onoes")
-        
+
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
