@@ -42,8 +42,7 @@ class Controller:
         # save existing descriptions in a list, so that they can be compared
         # with loaded descriptions to determine if they already exist.
         descriptions = []
-        for product in self.products:
-            descriptions.append(product.get_description())
+        self.get_descriptions(descriptions)
         # for every instance of product saved,
         # load it, get it's object data, then store it.
         loaded_data = self.my_file_handler.read_database()
