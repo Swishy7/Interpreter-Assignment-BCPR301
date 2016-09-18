@@ -68,6 +68,22 @@ class UnitTester(unittest.TestCase):
         self.assertEqual(type(
                          self.my_controller.products[0].get_views()
                          ) is int, True, "onoes")
+    
+    def test_no_duplicate_description(self):
+        before = len(self.my_controller.products)
+        self.my_controller.save_data()
+        self.my_controller.load_data()
+        after = len(self.my_controller.products)
+        self.assertEqual(before, after, "onoes")
+        
+    def test_add_product(self):
+        self.my_controller.save_data()
+        del self.my_controller.products[0]
+        before = len(self.my_controller.products)
+        self.my_controller.load_data()
+        after = len(self.my_controller.products)
+        self.assertEqual(before + 1, after, "onoes")
+        
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
