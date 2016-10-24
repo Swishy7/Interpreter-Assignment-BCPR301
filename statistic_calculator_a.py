@@ -19,9 +19,9 @@ class StatisticCalculatorA(stat_calc.StatisticCalculator):
     """
     def build_product(self, numbers):
         if(type(numbers[0] is int)):
-            return stats_int()
+            return stats_int.StatsInt()
         elif(type(numbers[0] is str)):
-            return stats_currency()
+            return stats_currency.StatsCurrency()
         return None
 
 

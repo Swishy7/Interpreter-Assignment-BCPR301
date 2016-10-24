@@ -145,7 +145,7 @@ class Controller:
     def get_min_views(self):
         if self.check_data():
             views = self.get_views()
-            print(self.my_statistic_calculator.calc_min_views(views))
+            print(self.my_statistic_calculator.calc_min(views))
         else:
             print("No products to display try loading or scraping")
 

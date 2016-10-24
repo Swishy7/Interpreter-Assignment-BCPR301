@@ -14,12 +14,12 @@ class StatisticCalculator():
 
     def calc_min(self, numbers):
         stats_calc = self.build_product(numbers)
-        return stats_calc.min()
+        return stats_calc.min(numbers)
 
     def calc_average(self, numbers):
         stats_calc = self.build_product(numbers)
-        return stats_calc.average()
+        return stats_calc.average(numbers)
 
     def calc_max(self, numbers):
         stats_calc = self.build_product(numbers)
-        return stats_calc.max()
+        return stats_calc.max(numbers)
