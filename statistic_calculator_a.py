@@ -9,12 +9,21 @@ Test the correct views
 >>> s.calc_average_views({20, 21, 22})
 21.0
 """
+from InterpreterAssignment import statistic_calculator as stat_calc
+from InterpreterAssignment import stats_int
+from InterpreterAssignment import stats_currency
 
-
-class StatisticCalculatorA:
+class StatisticCalculatorA(stat_calc.StatisticCalculator):
     """
         Generates price and view statistics
     """
+    def build_product(self, numbers):
+        if(type(numbers[0] is int)):
+            return stats_int()
+        elif(type(numbers[0] is str)):
+            return stats_currency()
+        return None
+
 
     def calc_min_price(self, currency_list):
         prices = self.price_translator(currency_list)
