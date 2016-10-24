@@ -12,14 +12,14 @@ class StatisticCalculator():
     def build_product(self, type):
         pass
 
-    def calc_min(self):
+    def calc_min(self, numbers):
         stats_calc = self.build_product(type)
         return stats_calc.min()
 
-    def calc_average(self):
+    def calc_average(self, numbers):
         stats_calc = self.build_product(type)
         return stats_calc.average()
 
-    def calc_max(self):
+    def calc_max(self, numbers):
         stats_calc = self.build_product(type)
         return stats_calc.max()

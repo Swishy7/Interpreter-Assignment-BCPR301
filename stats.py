@@ -6,16 +6,16 @@ Created on 24/10/2016
 from abc import ABCMeta, abstractmethod
 
 
-class Stats():
+class Stats(metaclass=ABCMeta):
 
     @abstractmethod
-    def min(self):
+    def min(self, numbers):
         raise NotImplementedError
 
     @abstractmethod
-    def average(self):
+    def average(self, numbers):
         raise NotImplementedError
 
     @abstractmethod
-    def max(self):
+    def max(self, numbers):
         raise NotImplementedError
