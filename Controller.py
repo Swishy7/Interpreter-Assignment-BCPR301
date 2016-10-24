@@ -152,14 +152,14 @@ class Controller:
     def get_max_views(self):
         if self.check_data():
             views = self.get_views()
-            print(self.my_statistic_calculator.calc_max_views(views))
+            print(self.my_statistic_calculator.calc_max(views))
         else:
             print("No products to display try loading or scraping")
 
     def get_average_views(self):
         if self.check_data():
             views = self.get_views()
-            print(self.my_statistic_calculator.calc_average_views(views))
+            print(self.my_statistic_calculator.calc_average(views))
         else:
             print("No products to display try loading or scraping")
 

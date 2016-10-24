@@ -15,7 +15,7 @@ class StatsInt(stats.Stats):
         total = 0
         for number in numbers:
             total += number
-        average = total / len(number)
+        average = total / len(numbers)
         return average
 
     def max(self, numbers):
