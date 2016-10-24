@@ -3,8 +3,7 @@ import controller
 import html_parser
 import command_interpreter as cmdi
 import file_handler
-import statistic_calculator as calc
-import coverage
+import statistic_calculator_a as calc
 
 
 class UnitTester(unittest.TestCase):
@@ -16,7 +15,7 @@ class UnitTester(unittest.TestCase):
                                             html_parser.Scrapper(),
                                             cmdi.CommandInterpreter(),
                                             file_handler.FileHandler(),
-                                            calc.StatisticCalculator()
+                                            calc.StatisticCalculatorA()
                                         )
         cls.my_controller.scrape_data()
 

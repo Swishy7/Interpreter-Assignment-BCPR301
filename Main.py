@@ -7,7 +7,7 @@ import controller
 import html_parser
 import command_interpreter as cmdi
 import file_handler
-import statistic_calculator as calc
+import statistic_calculator_a as calc
 import sys
 
 
@@ -15,7 +15,7 @@ def main():
     my_controller = controller.Controller(html_parser.Scrapper(),
                                           cmdi.CommandInterpreter(),
                                           file_handler.FileHandler(),
-                                          calc.StatisticCalculator()
+                                          calc.StatisticCalculatorA()
                                           )
     auto_run_scraper = False
     if len(sys.argv) > 1 and sys.argv[1] == 'true':

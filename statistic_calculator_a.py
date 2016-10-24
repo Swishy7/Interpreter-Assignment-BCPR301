@@ -1,7 +1,7 @@
 """
 Test the correct views
 
->>> s = StatisticCalculator()
+>>> s = StatisticCalculatorA()
 >>> s.calc_min_views({20, 200, 487, 35})
 20
 >>> s.calc_max_views({500, 12, 1337, 13})
@@ -11,7 +11,7 @@ Test the correct views
 """
 
 
-class StatisticCalculator:
+class StatisticCalculatorA:
     """
         Generates price and view statistics
     """
