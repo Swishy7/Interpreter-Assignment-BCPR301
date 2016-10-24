@@ -6,7 +6,7 @@ Created on 24/10/2016
 from abc import ABCMeta, abstractmethod
 
 
-class StatisticCalculator():
+class StatisticCalculator(metaclass=ABCMeta):
 
     @abstractmethod
     def build_product(self, numbers):

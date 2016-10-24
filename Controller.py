@@ -112,7 +112,7 @@ class Controller:
         if self.check_data():
             currency = self.get_currency()
             print("{0:.2f}".format(
-                            self.my_statistic_calculator.calc_average_price(
+                            self.my_statistic_calculator.calc_average(
                                                                     currency)))
         else:
             print("No products to display try loading or scraping")
@@ -120,14 +120,14 @@ class Controller:
     def get_max_price(self):
         if self.check_data():
             currency = self.get_currency()
-            print(self.my_statistic_calculator.calc_max_price(currency))
+            print(self.my_statistic_calculator.calc_max(currency))
         else:
             print("No products to display try loading or scraping")
 
     def get_min_price(self):
         if self.check_data():
             currency = self.get_currency()
-            print(self.my_statistic_calculator.calc_min_price(currency))
+            print(self.my_statistic_calculator.calc_min(currency))
 
     # returns a list of currencies from the loaded products
     def get_currency(self):

@@ -18,9 +18,9 @@ class StatisticCalculatorA(stat_calc.StatisticCalculator):
         Generates price and view statistics
     """
     def build_product(self, numbers):
-        if(type(numbers[0] is int)):
+        if(type(numbers[0]) is int):
             return stats_int.StatsInt()
-        elif(type(numbers[0] is str)):
+        elif(type(numbers[0]) is str):
             return stats_currency.StatsCurrency()
         return None
 
