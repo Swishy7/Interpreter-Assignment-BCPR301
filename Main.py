@@ -9,6 +9,7 @@ import command_interpreter as cmdi
 import file_handler
 import statistic_calculator_a as calc
 import sys
+from InterpreterAssignment.products_observer import ProductObserver
 
 
 def main():
@@ -17,6 +18,9 @@ def main():
                                           file_handler.FileHandler(),
                                           calc.StatisticCalculatorA()
                                           )
+    product_observer = ProductObserver()
+    my_controller.attach(product_observer)
+    product_observer.set_subject(my_controller)
     auto_run_scraper = False
     if len(sys.argv) > 1 and sys.argv[1] == 'true':
         auto_run_scraper = True

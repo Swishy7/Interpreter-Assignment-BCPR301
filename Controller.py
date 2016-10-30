@@ -1,7 +1,8 @@
 import product
+from InterpreterAssignment.subject import Subject
 
 
-class Controller:
+class Controller(Subject):
     """
     classdocs
 
@@ -21,6 +22,7 @@ class Controller:
         self.my_command_intepreter = the_command_interpreter
         self.my_file_handler = the_file_handler
         self.my_statistic_calculator = the_statistics_calculator
+        self.observers = []
 
     def go(self, is_auto_scrape):
         if is_auto_scrape:
@@ -52,7 +54,7 @@ class Controller:
                 # it's not in the list, add it.
                 if loaded_product.get_description() not in descriptions:
                     self.products.append(loaded_product)
-            print("Loaded " + str(len(self.products)) + " products")
+                    self.notify_observers()
 
     def set_db_path(self, the_path):
         self.my_file_handler.set_path(the_path)
@@ -79,7 +81,7 @@ class Controller:
                                  web_data["links"][i],
                                  web_data["views"][i],
                                  date)
-
+        
     # checks an object to see if it contains anything
     # checks the products if nothing is passed in
 
@@ -94,7 +96,8 @@ class Controller:
                                              link,
                                              date,
                                              view))
-
+        
+        self.notify_observers()
     def check_data(self, data=products):
         if len(data) > 0:
             return True

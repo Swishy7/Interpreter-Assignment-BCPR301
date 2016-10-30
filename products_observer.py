@@ -11,5 +11,4 @@ class ProductObserver(Observer):
 
     def update(self):
         self.product_count = len(self.subject.products)
-        print("(> ^_^ )>---[ " + self.product_count + " products are loaded. ]")
-        print(self.name + " updated to " + self.observerState)
+        print("(> ^_^ )>---[ " + str(self.product_count) + " products are loaded. ]")
