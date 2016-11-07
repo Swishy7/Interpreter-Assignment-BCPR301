@@ -8,7 +8,6 @@ from abc import ABCMeta, abstractmethod
 
 class Observer(metaclass=ABCMeta):
     def __init__(self):
-        self.product_count = 0
         self.subject = None
 
     @abstractmethod
